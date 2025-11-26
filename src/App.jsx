@@ -1,14 +1,14 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import LayoutWrapper from './components/Layout/LayoutWrapper'
-import Home from './pages/Home'
-import Blog from './pages/Blog'
-import Post from './pages/Post'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import Privacy from './pages/Privacy'
-import Terms from './pages/Terms'
-import NotFound from './pages/NotFound'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import LayoutWrapper from "./components/Layout/LayoutWrapper";
+import Home from "./pages/Home";
+import Blog from "./pages/Blog";
+import Post from "./pages/Post";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -22,9 +22,10 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/hello" element={<h1>Helllo</h1>} />
       </Routes>
     </LayoutWrapper>
-  )
+  );
 }
 
-export default App
+export default App;
