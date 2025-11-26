@@ -1,42 +1,36 @@
-name: React Build & Deploy to Hostinger
+name: Build and Deploy
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v3
 
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 18
 
       - name: Install dependencies
-        working-directory: ./client
-        run: npm install --legacy-peer-deps
+        run: npm install
+        working-directory: ./
 
-      - name: Build React Project
-        working-directory: ./client
+      - name: Build project
         run: npm run build
+        working-directory: ./
 
-      - name: Verify dist exists
-        run: |
-          echo "Listing dist folder:"
-          ls -al ./client/dist/
-
-      - name: Deploy via FTP to Hostinger
+      - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.0
         with:
-          server: ${{ secrets.HOSTINGER_FTP_HOST }}
-          username: ${{ secrets.HOSTINGER_FTP_USER }}
-          password: ${{ secrets.HOSTINGER_FTP_PASS }}
-          port: 21
-          protocol: ftp
-          local-dir: ./client/dist/
-          server-dir: /public_html
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: /public_html/
