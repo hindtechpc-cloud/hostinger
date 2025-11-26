@@ -20,7 +20,7 @@ const Home = () => {
         {/* Hero Section */}
         <section className="text-center py-16">
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
-            Welcome to Our Blog
+            Welcome to Our Blog Web page
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
             Discover the latest insights, tutorials, and trends in technology and programming.
